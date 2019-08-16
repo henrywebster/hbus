@@ -20,7 +20,7 @@ tar cvfz - $TARGETS | gpg --encrypt --recipient $GPG_DECRYPT --output $OUTFILE
 
 # check if file size is not too big
 if [ $(stat --format="%s" $OUTFILE) -gt "$MAX_UPLOAD" ]; then
-    echo ERROR! Backup not uploaded, exceeded max size!
+    echo [ERROR] Backup not uploaded, exceeded max size!
 else
     # google cloud
     gsutil cp $OUTFILE gs://$GOOGLE_BUCKET
